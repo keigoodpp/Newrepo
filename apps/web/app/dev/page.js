@@ -1,3 +1,5 @@
+import { headers } from 'next/headers';
+
 async function fetchHealth() {
   try {
     const res = await fetch('/api/health', { cache: 'no-store' });
@@ -10,10 +12,20 @@ async function fetchHealth() {
 
 export default async function Dev() {
   const health = await fetchHealth();
+  const h = headers();
+  const host = h.get('x-forwarded-host') || h.get('host') || '';
+  const proto = h.get('x-forwarded-proto') || 'https';
+  const baseUrl = host ? `${proto}://${host}` : '';
   return (
     <main style={{ minHeight: '100svh', padding: 16 }}>
       <h1 style={{ fontSize: 22, marginBottom: 8 }}>Dev Dashboard</h1>
       <div style={{ display: 'grid', gap: 12 }}>
+        <section style={{ padding: 12, border: '1px solid #ddd', borderRadius: 8 }}>
+          <h2 style={{ fontSize: 16, margin: 0, marginBottom: 8 }}>Share URL</h2>
+          <div style={{ fontFamily: 'monospace', wordBreak: 'break-all' }}>
+            {baseUrl ? `${baseUrl}/dev` : 'URL resolving...'}
+          </div>
+        </section>
         <section style={{ padding: 12, border: '1px solid #ddd', borderRadius: 8 }}>
           <h2 style={{ fontSize: 16, margin: 0, marginBottom: 8 }}>Web</h2>
           <div>OK (HMR有効)</div>
