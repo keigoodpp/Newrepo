@@ -1,0 +1,27 @@
+{
+  "name": "AWS Learning Portal Dev",
+  "image": "mcr.microsoft.com/devcontainers/universal:2",
+  "features": {},
+  "forwardPorts": [3000, 8000],
+  "portsAttributes": {
+    "3000": { "label": "web", "protocol": "http", "onAutoForward": "notify" },
+    "8000": { "label": "api", "protocol": "http", "onAutoForward": "notify" }
+  },
+  "githubCodespacesPortsAttributes": {
+    "3000": { "label": "web", "visibility": "public" },
+    "8000": { "label": "api", "visibility": "public" }
+  },
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "esbenp.prettier-vscode",
+        "dbaeumer.vscode-eslint",
+        "ms-azuretools.vscode-docker",
+        "bmewburn.vscode-intelephense-client"
+      ]
+    }
+  },
+  "postCreateCommand": "bash -lc 'corepack enable && npm i -g npm@latest && npm install'",
+  "postStartCommand": "bash -lc '/workspace/scripts/dev.start.sh'",
+  "remoteUser": "vscode"
+}
