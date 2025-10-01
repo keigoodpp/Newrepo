@@ -1,0 +1,12 @@
+{
+  "name": "aws-learning-portal",
+  "private": true,
+  "workspaces": [
+    "apps/web"
+  ],
+  "scripts": {
+    "dev": "npm -w apps/web run dev",
+    "build": "npm -w apps/web run build",
+    "start": "npm -w apps/web run start"
+  }
+}
