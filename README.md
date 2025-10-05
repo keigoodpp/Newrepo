@@ -22,29 +22,44 @@ The devcontainer uses `mcr.microsoft.com/devcontainers/php:8.3` with Node 20. On
 3. On attach, both servers start automatically:
    - Vite dev server on port 3000
    - Laravel server on port 8000
-4. Get preview URLs from the terminal:
-   - Web: `./tools/post-preview-url.sh 3000`
-   - API: `./tools/post-preview-url.sh 8000`
-5. Open on your phone: copy the printed `https://<codespace>-PORT.app.github.dev` link and paste it into your mobile browser. Codespaces URLs are public by default when you share the forwarded port.
+4. Get preview URLs from the terminal (auto-printed after attach):
+   - Web: `https://<codespace>-3000.app.github.dev`
+   - API: `https://<codespace>-8000.app.github.dev`
+5. Open on your phone: just tap the printed links. Ports are auto-set to Public.
 
 Notes:
 - Laravel `.env` is created on demand and the app key is generated automatically.
-- The devcontainer forwards ports 3000 and 8000. If prompted in Codespaces, set ports to Public to access from mobile.
+- The devcontainer forwards ports 3000 and 8000 and sets them Public automatically in Codespaces.
 - Database defaults to SQLite for development; MySQL is optional.
 
 ## Preview URL helper
 
-Use the helper to print the preview URL and optionally comment it to the current PR if the GitHub CLI is authenticated:
+Use the helper to print preview URLs and optionally comment them to the current PR if the GitHub CLI is authenticated:
 
 ```bash
-./tools/post-preview-url.sh 3000
-./tools/post-preview-url.sh 8000
+./tools/post-preview-url.sh       # prints both 3000 and 8000
+./tools/post-preview-url.sh 3000  # prints only port 3000
+./tools/post-preview-url.sh 8000  # prints only port 8000
 ```
 
 Output example:
 
 ```text
-🔗 Preview: https://<codespace>-3000.app.github.dev
+🔗 Preview (3000): https://<codespace>-3000.app.github.dev
+🔗 Preview (8000): https://<codespace>-8000.app.github.dev
+```
+
+## Phone testing in Codespaces
+
+Open this repo in Codespaces and wait for auto-start logs. After attach:
+
+- Web URL: `https://<codespace>-3000.app.github.dev`
+- API URL: `https://<codespace>-8000.app.github.dev`
+
+Both ports are automatically forwarded and set to Public, so you can open these links directly on your phone. If you need to reprint the links, run:
+
+```bash
+./tools/post-preview-url.sh
 ```
 
 If `gh pr view` succeeds, the script will also add a PR comment with the same URL.
