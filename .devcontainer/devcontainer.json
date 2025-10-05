@@ -1,7 +1,12 @@
 {
   "name": "AWS Learning Portal Dev",
   "image": "mcr.microsoft.com/devcontainers/universal:2",
-  "features": {},
+  "features": {
+    "ghcr.io/devcontainers/features/php:1": {
+      "version": "8.2",
+      "installComposer": true
+    }
+  },
   "forwardPorts": [3000, 8000],
   "portsAttributes": {
     "3000": { "label": "web", "protocol": "http", "onAutoForward": "notify" },
