@@ -5,7 +5,8 @@
     "ghcr.io/devcontainers/features/node:1": { "version": "20" },
     "ghcr.io/devcontainers/features/mysql:1": {}
   },
-  "postCreateCommand": "composer install || true && npm install || true",
+  "forwardPorts": [8000, 3000],
+  "postCreateCommand": "composer install -d apps/api || true && npm install || true",
   "customizations": {
     "vscode": {
       "extensions": [
