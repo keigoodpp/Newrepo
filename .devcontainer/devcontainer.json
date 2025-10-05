@@ -1,27 +1,18 @@
 {
-  "name": "AWS Learning Portal Dev",
-  "image": "mcr.microsoft.com/devcontainers/universal:2",
-  "features": {},
-  "forwardPorts": [3000, 8000],
-  "portsAttributes": {
-    "3000": { "label": "web", "protocol": "http", "onAutoForward": "notify" },
-    "8000": { "label": "api", "protocol": "http", "onAutoForward": "notify" }
+  "name": "Laravel + Node Dev",
+  "image": "mcr.microsoft.com/devcontainers/php:8.3",
+  "features": {
+    "ghcr.io/devcontainers/features/node:1": { "version": "20" },
+    "ghcr.io/devcontainers/features/mysql:1": {}
   },
-  "githubCodespacesPortsAttributes": {
-    "3000": { "label": "web", "visibility": "public" },
-    "8000": { "label": "api", "visibility": "public" }
-  },
+  "postCreateCommand": "composer install || true && npm install || true",
   "customizations": {
     "vscode": {
       "extensions": [
-        "esbenp.prettier-vscode",
-        "dbaeumer.vscode-eslint",
-        "ms-azuretools.vscode-docker",
-        "bmewburn.vscode-intelephense-client"
+        "ms-php.php-intellisense",
+        "bmewburn.vscode-intelephense-client",
+        "esbenp.prettier-vscode"
       ]
     }
-  },
-  "postCreateCommand": "bash -lc 'corepack enable && npm i -g npm@latest && npm install'",
-  "postStartCommand": "bash -lc '/workspace/scripts/dev.start.sh'",
-  "remoteUser": "vscode"
+  }
 }
