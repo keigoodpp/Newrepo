@@ -13,14 +13,21 @@ This repository hosts a mobile-first PWA built with **React + Vite** for the fro
 
 ## Quick Start (Codespaces)
 
+Codespaces will install dependencies and auto-start both the frontend (Vite) and backend (Laravel) on attach.
+
 1. Open this repo in GitHub Codespaces.
-2. Wait for dependencies install to finish.
-3. Run the dev services:
-   - Web: `npm -w apps/web run dev -- --host 0.0.0.0 --port 3000` (Vite on 3000).
-   - API: `cd apps/api && php artisan serve --host=0.0.0.0 --port 8000` (Laravel on 8000).
-4. Access forwarded ports in the Codespaces UI from your phone:
-   - Web UI: 3000.
-   - API: 8000 (`/api/health` returns JSON).
+2. Wait until `apps/api` Composer install and `apps/web` npm install complete.
+3. On first attach, services start automatically:
+   - Web (Vite): Port 3000
+   - API (Laravel): Port 8000
+4. Verify preview URLs from terminal:
+   - Web: `./tools/post-preview-url.sh 3000`
+   - API: `./tools/post-preview-url.sh 8000`
+5. Access from your phone via the printed `https://<codespace>-PORT.app.github.dev` URLs.
+
+Notes:
+- Laravel `.env` is created from `.env.example` if missing and app key is generated automatically.
+- Database defaults to SQLite for development; MySQL is not required.
 
 ## CI/CD
 
