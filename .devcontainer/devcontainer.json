@@ -1,24 +1,22 @@
 {
   "name": "Fullstack (PHP + Node)",
-  "image": "mcr.microsoft.com/devcontainers/php:8.3",
+  "image": "mcr.microsoft.com/devcontainers/javascript-node:20",
   "features": {
-    "ghcr.io/devcontainers/features/node:1": { "version": "20" }
+    "ghcr.io/devcontainers/features/php:1": { "version": "8.3" },
+    "ghcr.io/devcontainers/features/mysql-client:1": {}
   },
-  "remoteUser": "vscode",
-  "postCreateCommand": "sudo apt-get update -y && sudo apt-get install -y mysql-client && npm install -g pnpm && cd apps/web && pnpm install",
   "forwardPorts": [3000, 8000],
   "portsAttributes": {
-    "3000": { "label": "Web (Vite)", "onAutoForward": "openBrowser", "protocol": "http" },
-    "8000": { "label": "API (PHP)", "onAutoForward": "openBrowser", "protocol": "http" }
+    "3000": { "label": "Web (Vite)", "onAutoForward": "openBrowser" },
+    "8000": { "label": "API (Laravel)", "onAutoForward": "openBrowser" }
   },
-  "postAttachCommand": "bash .devcontainer/start.sh",
   "customizations": {
     "vscode": {
-      "extensions": [
-        "esbenp.prettier-vscode",
-        "dbaeumer.vscode-eslint",
-        "ms-azuretools.vscode-docker"
-      ]
+      "settings": { "remote.autoForwardPortsSource": "process" },
+      "extensions": ["ms-azuretools.vscode-docker"]
     }
-  }
+  },
+  "remoteUser": "vscode",
+  "postCreateCommand": "bash .devcontainer/setup.sh",
+  "postStartCommand": "bash .devcontainer/start.sh"
 }
