@@ -1,24 +1,12 @@
 {
-  "name": "Laravel + Node Dev",
-  "image": "mcr.microsoft.com/devcontainers/php:8.3",
+  "name": "Fullstack (PHP + Node)",
+  "image": "mcr.microsoft.com/devcontainers/javascript-node:20",
   "features": {
-    "ghcr.io/devcontainers/features/node:1": { "version": "20" },
-    "ghcr.io/devcontainers/features/mysql:1": {}
+    "ghcr.io/devcontainers/features/php:1": {
+      "version": "8.3"
+    },
+    "ghcr.io/devcontainers/features/mysql-client:1": {}
   },
-  "forwardPorts": [3000, 8000],
-  "postCreateCommand": "bash -lc 'cd apps/api && composer install || true; cd ../web && npm install || true'",
-  "postAttachCommand": [
-    "bash -lc ' if command -v gh >/dev/null 2>&1 && [ -n \"${CODESPACE_NAME:-}\" ]; then gh codespace ports visibility 3000:public,8000:public -c \"$CODESPACE_NAME\" || true; fi'",
-    "bash -lc ' cd apps/api && php artisan key:generate --ansi 2>/dev/null || true && php artisan serve --host 0.0.0.0 --port 8000 & cd ../../apps/web && npm run dev -- --host 0.0.0.0 --port 3000 &'",
-    "bash -lc ' if [ -n \"${CODESPACE_NAME:-}\" ]; then echo \"🔗 Web:  https://${CODESPACE_NAME}-3000.app.github.dev\"; echo \"🔗 API:  https://${CODESPACE_NAME}-8000.app.github.dev\"; else echo \"Not running inside Codespaces.\"; fi'"
-  ],
-  "customizations": {
-    "vscode": {
-      "extensions": [
-        "ms-php.php-intellisense",
-        "bmewburn.vscode-intelephense-client",
-        "esbenp.prettier-vscode"
-      ]
-    }
-  }
+  "remoteUser": "vscode",
+  "postCreateCommand": "npm install -g pnpm && cd apps/web && npm install"
 }
