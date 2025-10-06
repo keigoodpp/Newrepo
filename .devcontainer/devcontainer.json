@@ -5,7 +5,7 @@
     "ghcr.io/devcontainers/features/node:1": { "version": "20" }
   },
   "remoteUser": "vscode",
-  "postCreateCommand": "sudo apt-get update && sudo apt-get install -y mariadb-client && npm install -g pnpm && cd apps/web && pnpm install",
+  "postCreateCommand": "sudo apt-get update -y && sudo apt-get install -y mysql-client && npm install -g pnpm && cd apps/web && pnpm install",
   "customizations": {
     "vscode": {
       "extensions": [
