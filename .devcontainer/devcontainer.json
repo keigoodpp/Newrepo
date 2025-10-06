@@ -1,12 +1,13 @@
 {
   "name": "Stable Codespace (Node + PHP)",
   "image": "mcr.microsoft.com/devcontainers/base:ubuntu-22.04",
-  "forwardPorts": [3000, 8000],
+  "forwardPorts": [3000, 8000, 7681],
   "portsAttributes": {
     "3000": { "label": "Web (Vite)", "onAutoForward": "openBrowser" },
-    "8000": { "label": "API (Laravel)", "onAutoForward": "openBrowser" }
+    "8000": { "label": "API (Laravel)", "onAutoForward": "openBrowser" },
+    "7681": { "label": "Web Terminal (ttyd)", "onAutoForward": "openBrowser" }
   },
   "remoteUser": "vscode",
   "postCreateCommand": "bash .devcontainer/setup.sh",
-  "postStartCommand": "bash scripts/startup-logs.sh && tail -f /workspace/logs/startup.log"
+  "postStartCommand": "bash scripts/startup-logs.sh && mkdir -p /workspace/logs && nohup ttyd -p 7681 -c user:pass123 bash >/workspace/logs/ttyd.log 2>&1 &"
 }

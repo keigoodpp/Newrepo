@@ -2,7 +2,7 @@ set -eux
 
 # Basic deps
 sudo apt-get update -y
-sudo apt-get install -y software-properties-common curl unzip git ca-certificates lsb-release gnupg
+sudo apt-get install -y software-properties-common curl unzip git ca-certificates lsb-release gnupg lsof ttyd
 
 # PHP 8.3
 sudo add-apt-repository -y ppa:ondrej/php
