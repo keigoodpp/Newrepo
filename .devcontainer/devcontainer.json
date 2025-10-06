@@ -5,6 +5,8 @@
     "ghcr.io/devcontainers/features/node:1": { "version": "20" },
     "ghcr.io/devcontainers/features/mysql-client:1": {}
   },
+  "remoteUser": "vscode",
+  "postCreateCommand": "npm install -g pnpm && cd apps/web && pnpm install",
   "customizations": {
     "vscode": {
       "extensions": [
@@ -13,7 +15,5 @@
         "ms-azuretools.vscode-docker"
       ]
     }
-  },
-  "remoteUser": "vscode",
-  "postCreateCommand": "npm -w apps/web install"
+  }
 }

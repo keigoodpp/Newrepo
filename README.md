@@ -8,12 +8,12 @@ This repository hosts a mobile-first PWA built with **React + Vite** for the fro
 - `apps/api`: Laravel API
 - `infra/`: IaC placeholders (CDK/Terraform to be added)
 - `.github/workflows`: CI for basic build validation
-- `.devcontainer/`: Codespaces configuration (Node 20 base with PHP 8.3 + MySQL client)
+- `.devcontainer/`: Codespaces configuration (PHP 8.3 base with Node 20 feature + MySQL client)
 - `docker-compose.yml`: Local two-service dev environment (optional in Codespaces)
 
 ## Quick Start (Codespaces or Local Devcontainer)
 
-The devcontainer uses a Node 20 base image (`mcr.microsoft.com/devcontainers/javascript-node:20`) and includes PHP 8.3 and a MySQL client. On first attach, it installs dependencies for both apps and starts both servers so you can preview immediately.
+The devcontainer uses a PHP 8.3 base image (`mcr.microsoft.com/devcontainers/php:8.3`) and includes Node 20 and a MySQL client. On first attach, it installs dependencies for both apps and starts both servers so you can preview immediately.
 
 1. Open this repo in GitHub Codespaces (or locally in VS Code and "Reopen in Container").
 2. Wait for dependency install to finish:
