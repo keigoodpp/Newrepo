@@ -1,8 +1,9 @@
 {
   "name": "Fullstack (PHP + Node)",
-  "image": "mcr.microsoft.com/devcontainers/javascript-node:20",
+  "image": "mcr.microsoft.com/devcontainers/base:ubuntu-22.04",
   "features": {
-    "ghcr.io/devcontainers/features/php:1": { "version": "8.3" },
+    "ghcr.io/devcontainers/features/node:1": { "version": "20" },
+    "ghcr.io/devcontainers/features/php:1":  { "version": "8.3" },
     "ghcr.io/devcontainers/features/mysql-client:1": {}
   },
   "forwardPorts": [3000, 8000],
