@@ -7,6 +7,15 @@
     },
     "ghcr.io/devcontainers/features/mysql-client:1": {}
   },
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "esbenp.prettier-vscode",
+        "dbaeumer.vscode-eslint",
+        "ms-azuretools.vscode-docker"
+      ]
+    }
+  },
   "remoteUser": "vscode",
-  "postCreateCommand": "npm install -g pnpm && cd apps/web && npm install"
+  "postCreateCommand": "npm install -g pnpm && cd apps/web && pnpm install"
 }
