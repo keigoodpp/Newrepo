@@ -2,6 +2,7 @@
 set -e
 LOG_DIR="/workspace/logs"
 mkdir -p "$LOG_DIR"
+mkdir -p /workspace/logs
 echo "🚀 Codespace startup at $(date)" > "$LOG_DIR/startup.log"
 echo "▶ Checking frontend (Vite / React)" >> "$LOG_DIR/startup.log"
 if lsof -i:3000 >/dev/null 2>&1; then echo "✅ Port 3000 active" >> "$LOG_DIR/startup.log"; else echo "❌ Port 3000 inactive" >> "$LOG_DIR/startup.log"; fi
