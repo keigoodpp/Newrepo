@@ -1,10 +1,8 @@
 {
   "name": "Fullstack (PHP + Node)",
-  "image": "mcr.microsoft.com/devcontainers/javascript-node:20",
+  "image": "mcr.microsoft.com/devcontainers/php:8.3",
   "features": {
-    "ghcr.io/devcontainers/features/php:1": {
-      "version": "8.3"
-    },
+    "ghcr.io/devcontainers/features/node:1": { "version": "20" },
     "ghcr.io/devcontainers/features/mysql-client:1": {}
   },
   "customizations": {
@@ -17,5 +15,5 @@
     }
   },
   "remoteUser": "vscode",
-  "postCreateCommand": "npm install -g pnpm && cd apps/web && pnpm install"
+  "postCreateCommand": "npm -w apps/web install"
 }
