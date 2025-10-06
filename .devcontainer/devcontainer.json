@@ -1,21 +1,10 @@
 {
-  "name": "Fullstack (PHP + Node)",
+  "name": "Stable Codespace (Node + PHP)",
   "image": "mcr.microsoft.com/devcontainers/base:ubuntu-22.04",
-  "features": {
-    "ghcr.io/devcontainers/features/node:1": { "version": "20" },
-    "ghcr.io/devcontainers/features/php:1":  { "version": "8.3" },
-    "ghcr.io/devcontainers/features/mysql-client:1": {}
-  },
   "forwardPorts": [3000, 8000],
   "portsAttributes": {
     "3000": { "label": "Web (Vite)", "onAutoForward": "openBrowser" },
     "8000": { "label": "API (Laravel)", "onAutoForward": "openBrowser" }
-  },
-  "customizations": {
-    "vscode": {
-      "settings": { "remote.autoForwardPortsSource": "process" },
-      "extensions": ["ms-azuretools.vscode-docker"]
-    }
   },
   "remoteUser": "vscode",
   "postCreateCommand": "bash .devcontainer/setup.sh",
